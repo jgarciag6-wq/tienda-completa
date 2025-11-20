@@ -1,0 +1,4 @@
+body{font-family:Arial;background:#f3f3f3;margin:0;padding:0}
+header{background:#222;color:#fff;padding:20px;text-align:center}
+nav button{margin:5px;padding:10px 20px;border:none;background:#007bff;color:#fff;cursor:pointer;border-radius:5px}
+.product{background:#fff;padding:15px;margin:10px;border-radius:10px;box-shadow:0 0 5px #aaa}
