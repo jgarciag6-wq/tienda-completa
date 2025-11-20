@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>ElectroNova - Panel Admin</title>
+  <link rel="stylesheet" href="styles-admin.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="admin-nav">
+    <div class="nav-left">
+      <span class="nav-logo">⚡ ElectroNova Admin</span>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" id="btnDash">Dashboard</a>
+      <a href="#" id="btnProducts">Productos</a>
+      <a href="#" id="logoutBtn" class="logout">Cerrar sesión</a>
+      <a href="/index.html" class="back-store">← Volver a tienda</a>
+    </div>
+  </nav>
+
+  <!-- LOGIN -->
+  <div id="loginSection" class="login-card">
+    <h2>Iniciar sesión</h2>
+    <input id="user" placeholder="Usuario" />
+    <input id="pass" type="password" placeholder="Contraseña" />
+    <button id="btnLogin">Acceder</button>
+  </div>
+<!-- ===================================== -->
+<!-- USUARIOS – AGREGAR NUEVO USUARIO -->
+<!-- ===================================== -->
+<section class="user-admin-box">
+  
+  <div id="user-form" class="hidden user-form-box">
+    <h3>Registrar nuevo usuario</h3>
+
+    <input id="new-user-name" placeholder="Nombre completo">
+    <input id="new-user-email" placeholder="Correo electrónico">
+    <input id="new-user-pass" type="password" placeholder="Contraseña">
+
+    <button id="save-user" class="btn-success">Guardar usuario</button>
+    <button id="cancel-user" class="btn-danger">Cancelar</button>
+  </div>
+</section>
+
+
+  <!-- DASHBOARD -->
+  <section id="dashboardSection" class="admin-section">
+    <h2>Dashboard</h2>
+
+    <div class="dashboard-grid">
+      <div class="dash-card">
+        <span class="dash-title">Productos</span>
+        <span class="dash-number" id="countProducts">0</span>
+      </div>
+
+      <div class="dash-card">
+        <span class="dash-title">Stock total</span>
+        <span class="dash-number" id="countStock">0</span>
+      </div>
+
+      <div class="dash-card">
+        <span class="dash-title">Valor inventario</span>
+        <span class="dash-number" id="countValue">$0</span>
+      </div>
+
+      <div class="dash-card">
+        <span class="dash-title">Destacados</span>
+        <span class="dash-number" id="featuredCount">0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productsSection" class="admin-section">
+
+    <h2>Gestión de productos</h2>
+
+    <div class="product-form-card">
+      <h3>Crear / Editar Producto</h3>
+
+      <div class="form-grid">
+        <input id="name" placeholder="Nombre" />
+        <input id="brand" placeholder="Marca" />
+        <input id="category" placeholder="Categoría" />
+        <input id="price" type="number" placeholder="Precio" />
+        <input id="stock" type="number" placeholder="Stock" />
+        <input id="imageUrl" placeholder="URL Imagen" />
+      </div>
+
+      <textarea id="description" placeholder="Descripción"></textarea>
+
+      <label class="check-row">
+        <input type="checkbox" id="featured">
+        <span>Producto destacado</span>
+      </label>
+
+      <div class="btn-row">
+        <button id="btnCreate" class="btn-primary">Guardar</button>
+        <button id="btnClear" class="btn-danger">Limpiar</button>
+      </div>
+    </div>
+
+    <h2>Productos registrados</h2>
+
+    <div id="productsList" class="products-list"></div>
+
+  </section>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>

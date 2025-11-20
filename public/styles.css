@@ -1,4 +1,638 @@
-body{font-family:Arial;background:#f3f3f3;margin:0;padding:0}
-header{background:#222;color:#fff;padding:20px;text-align:center}
-nav button{margin:5px;padding:10px 20px;border:none;background:#007bff;color:#fff;cursor:pointer;border-radius:5px}
-.product{background:#fff;padding:15px;margin:10px;border-radius:10px;box-shadow:0 0 5px #aaa}
+/* ============================================
+   ESTILO CYBERPUNK — ELECTRONOVA
+   Violeta Neón + Futurista + Animado
+=============================================== */
+
+/* Fuentes futuristas */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --bg-dark: #0c0b10;
+  --bg-card: #16141f;
+  --violet: #a259ff;
+  --violet-light: #c79aff;
+  --violet-neon: #b44cff;
+  --text-light: #e4e4e9;
+  --text-muted: #8a8297;
+  --border-glow: 0px 0px 12px rgba(162, 89, 255, 0.55);
+  --transition-fast: 0.25s ease;
+  --transition-slow: 0.45s ease;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   TOPBAR
+=============================================== */
+
+.topbar {
+  width: 100%;
+  padding: 18px 40px;
+  background: rgba(22, 20, 31, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(162, 89, 255, 0.2);
+}
+
+/* LOGO */
+.logo-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 26px;
+  color: var(--violet-light);
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px var(--violet);
+}
+
+.logo-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Botones Header */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--violet-light);
+  font-size: 15px;
+  margin: 0 12px;
+  cursor: pointer;
+  transition: var(--violet-light);
+}
+
+.nav-btn:hover {
+  color: var(--violet-light);
+  text-shadow: 0 0 8px var(--violet);
+}
+
+/* ============================================
+   HERO
+=============================================== */
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+}
+
+.hero-text h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 46px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--violet-light);
+  text-shadow: var(--border-glow);
+}
+
+.hero-text p {
+  max-width: 550px;
+  color: var(--text-muted);
+}
+
+/* Etiquetas */
+.hero-taglist {
+  margin: 20px 0;
+}
+
+.hero-tag {
+  background: rgba(162, 89, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-right: 8px;
+  font-size: 14px;
+  border: 1px solid rgba(162, 89, 255, 0.25);
+}
+
+/* Botones */
+.btn-primary {
+  background: linear-gradient(90deg, #007bff, #00b7ff);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.25s;
+  color: rgb(3, 7, 253);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #009dff, #33c9ff);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgb(234, 235, 238);
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   TARJETA HERO DERECHA
+=============================================== */
+
+.hero-card {
+  width: 360px;
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--border-glow);
+  border: 1px solid rgba(162, 89, 255, 0.2);
+  transition: 0.4s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px var(--violet);
+}
+
+/* ============================================
+   BENEFICIOS
+=============================================== */
+
+.benefits-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 40px 60px;
+  gap: 26px;
+}
+
+.benefit-card {
+  background: var(--bg-card);
+  padding: 22px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid rgba(162, 89, 255, 0.2);
+  transition: var(--transition-fast);
+}
+
+.benefit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--border-glow);
+}
+/* ============================================
+   PRODUCTOS — versión corregida
+=============================================== */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  padding: 30px;
+  gap: 30px;
+}
+
+/* Tarjeta uniforme */
+.product-card {
+  background: var(--bg-card);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(162, 89, 255, 0.25);
+  box-shadow: 0 0 22px rgba(140, 0, 255, 0.20);
+  transition: 0.25s ease;
+  min-height: 420px;                     /* 🔥 Altura fija */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(170, 0, 255, 0.35);
+}
+
+/* Contenedor imagen */
+.product-image-wrapper {
+  width: 100%;
+  height: 190px;                         /* 🔥 Tamaño uniforme */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0d0d15;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Imagen */
+.product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;                    /* 🔥 No se deforma */
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Texto */
+.product-card h3 {
+  font-size: 1.2rem;
+  color: var(--violet-light);
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.product-meta-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.product-price {
+  color: #00bfff;
+  font-weight: bold;
+}
+
+/* ============================================
+   FEATURED
+=============================================== */
+
+.featured-row {
+  display: flex;
+  gap: 20px;
+  padding: 30px 40px;
+}
+
+.featured-card {
+  flex: 1;
+  background: var(--bg-card);
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(162, 89, 255, 0.2);
+  box-shadow: var(--border-glow);
+  transition: var(--transition-slow);
+}
+
+.featured-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px var(--violet-neon);
+}
+
+/* ============================================
+   NOSOTROS
+=============================================== */
+
+.about-section {
+  padding: 60px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.value-card {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(162, 89, 255, 0.2);
+  transition: var(--transition-slow);
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--border-glow);
+}
+
+/* ============================================
+   CARRITO
+=============================================== */
+
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 100vh;
+  background: var(--bg-card);
+  padding: 20px;
+  border-left: 1px solid rgba(162, 89, 255, 0.4);
+  box-shadow: -2px 0 20px rgba(162, 89, 255, 0.3);
+  transform: translateX(100%);
+  transition: var(--transition-slow);
+}
+
+.cart-panel:not(.hidden) {
+  transform: translateX(0);
+}
+/* ==========================
+   PANEL LATERAL DEL USUARIO
+========================== */
+
+.user-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background: #111322;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    padding: 20px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.user-panel:not(.hidden) {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.user-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.user-backdrop:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-header h2 {
+    color: #fff;
+}
+
+.user-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-content input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1a1c2c;
+    color: white;
+}
+
+.user-content button {
+    padding: 10px;
+}
+
+.user-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.user-links a {
+    color: #8ab4ff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* ===========================================================
+   CATÁLOGO — Corrección de imágenes y alineación
+   =========================================================== */
+
+/* Contenedor de cada tarjeta */
+.product-card {
+  background: var(--bg-card);
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(162, 89, 255, 0.25);
+  transition: var(--transition-slow);
+  width: 100%;
+  min-height: 420px;           /* 🔥 Fuerza misma altura para todas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Contenedor de la imagen */
+.product-image-wrapper {
+  width: 100%;
+  height: 180px;               /* 🔥 Todas las imágenes misma altura */
+  overflow: hidden;
+  border-radius: 10px;
+  background: #0e0e13;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen */
+.product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;         /* 🔥 Hace que todas se adapten sin deformarse */
+}
+
+/* Corrección de textos */
+.product-card h3 {
+  font-size: 1.1rem;
+  margin-top: 12px;
+}
+
+.product-meta-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+/* FIX GENERAL PARA QUE EL SCROLL NO SE MUEVA SOLO */
+.page-section {
+  min-height: calc(100vh - 120px);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* EVITA QUE ANIMACIONES AFECTEN EL FLUJO DEL HTML */
+.hero-card {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* CORRIGE ESPACIOS INVISIBLES QUE EMPUJAN EL CONTENIDO */
+.hero {
+  align-items: flex-start;
+}
+
+/* DESACTIVA EFECTOS DE HOVER QUE ROMPEN EL LAYOUT */
+.hero-card:hover {
+  transform: translateY(0); /* en lugar de subir */
+  filter: brightness(1.08);
+}
+/* ===========================================
+   SECCIONES ACTIVAS / INACTIVAS
+=========================================== */
+.page-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out;
+}
+
+.page-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+/* --------------------------- */
+/*   SECCIÓN NOSOTROS / ABOUT  */
+/* --------------------------- */
+
+#section-nosotros {
+  padding-top: 120px; /* separa del contenido anterior */
+}
+
+.about-section {
+  max-width: 950px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2.3rem;
+  color: var(--accent);
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.about-text {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 1.15rem;
+  margin-bottom: 40px;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.about-image img {
+  width: 90%;
+  max-width: 700px;
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(120, 80, 255, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px rgba(140, 90, 255, 0.55);
+}
+/* ================================
+      SECCIÓN NOSOTROS MEJORADA
+================================ */
+
+.about-section {
+  max-width: 950px;
+  margin: auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  color: #cfcfcf;
+  max-width: 800px;
+  margin: auto;
+}
+
+.about-img-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.about-img-box img {
+  width: 70%;
+  max-width: 450px;
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(162, 89, 255, 0.3);
+}
+
+/* Misión & Visión */
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.mv-card {
+  background: #12121a;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid rgba(162, 89, 255, 0.3);
+  box-shadow: 0 0 20px rgba(162, 89, 255, 0.2);
+  transition: 0.3s;
+}
+
+.mv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(162, 89, 255, 0.4);
+}
+
+/* Valores */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.value-card {
+  background: #181820;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(162, 89, 255, 0.2);
+  transition: 0.3s;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(162, 89, 255, 0.3);
+}
+
+.gradient-title {
+  background: linear-gradient(90deg, #a259ff, #5ce1e6);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+}

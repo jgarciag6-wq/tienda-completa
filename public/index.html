@@ -1,22 +1,285 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Tienda Electrónica</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>ElectroNova Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-<body>
-  <header>
-    <h1>Tienda Electrónica</h1>
-    <nav>
-      <button onclick="loadProducts()">Catálogo</button>
-      <button onclick="showAbout()">Nosotros</button>
-      <button onclick="showCart()">Carrito</button>
-    </nav>
+
+<body class="body-root">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+
+    <div class="topbar-left">
+      <h1 class="logo">⚡ ElectroNova</h1>
+
+      <nav class="main-nav">
+        <button class="nav-btn" data-section="inicio">Inicio</button>
+        <button class="nav-btn" data-section="catalogo">Catálogo</button>
+        <button class="nav-btn" data-section="destacados">Destacados</button>
+        <button class="nav-btn" data-section="nosotros">Nosotros</button>
+        <button onclick="location.href='admin.html'" class="admin-btn">Admin</button>
+      </nav>
+    </div>
+
+    <div class="topbar-right">
+
+      <!-- BOTÓN USUARIO -->
+      <div class="user-menu-wrapper">
+        <button id="user-toggle" class="user-button">👤</button>
+
+        <!-- MENÚ DESPLEGABLE USUARIO -->
+        <div id="user-dropdown" class="user-dropdown hidden">
+          <button class="user-menu-item" data-action="login">Iniciar sesión</button>
+          <button class="user-menu-item" data-action="register">Registrarse</button>
+          <button class="user-menu-item hidden" data-action="logout" id="logout-btn">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <!-- BOTÓN CARRITO -->
+      <button id="cart-toggle" class="cart-button">
+        🛒<span id="cart-count" class="cart-badge">0</span>
+      </button>
+    </div>
   </header>
 
-  <section id="content"></section>
+  <!-- ======================================= -->
+  <!-- CONTENIDO PRINCIPAL -->
+  <!-- ======================================= -->
+  <main class="main-layout">
 
-  <script src="app.js"></script>
+    <!-- INICIO -->
+    <section id="section-inicio" class="page-section active">
+      <section class="hero">
+
+        <div class="hero-text">
+          <h1>
+            Bienvenido a <span class="accent">ElectroNova</span><br>
+            Todo para tus proyectos de <span class="accent">Robótica y Electrónica</span>
+          </h1>
+
+          <p class="muted">
+            Componentes confiables, precios accesibles y un catálogo diseñado para estudiantes, makers,
+            técnicos y apasionados por la tecnología.
+          </p>
+
+          <div class="hero-taglist">
+            <span class="hero-tag">⚡ Microcontroladores</span>
+            <span class="hero-tag">🤖 Sensores</span>
+            <span class="hero-tag">🔧 Actuadores</span>
+            <span class="hero-tag">📟 Displays</span>
+            <span class="hero-tag">🧪 Kits educativos</span>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary nav-btn" data-section="catalogo">Explorar catálogo</button>
+            <button class="btn-ghost nav-btn" data-section="destacados">Ver destacados</button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-chip">Kit recomendado</div>
+          <h2>Kit Arduino + Sensores</h2>
+          <p>Perfecto para automatización, parqueo, alarmas y proyectos educativos.</p>
+
+          <div class="hero-price-row">
+            <span class="hero-price">$180.000</span>
+          </div>
+
+          <button class="btn-primary full-width nav-btn" data-section="catalogo">
+            Ver en catálogo
+          </button>
+        </div>
+
+      </section>
+
+      <!-- BENEFICIOS -->
+      <section class="benefits-section">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <h3>Envíos rápidos</h3>
+          <p>Entregas seguras a nivel nacional.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🎓</div>
+          <h3>Enfoque educativo</h3>
+          <p>Componentes ideales para prácticas y laboratorios.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💡</div>
+          <h3>Proyectos reales</h3>
+          <p>Compatible con Arduino, ESP32, IoT y más.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">⭐</div>
+          <h3>Alta calidad</h3>
+          <p>Productos verificados y listos para usar.</p>
+        </div>
+      </section>
+
+      <!-- CATEGORÍAS -->
+      <section class="quick-categories">
+        <h2>Categorías principales</h2>
+
+        <div class="quick-grid">
+          <div class="quick-card nav-btn" data-section="catalogo">⚡ Microcontroladores</div>
+          <div class="quick-card nav-btn" data-section="catalogo">🤖 Sensores</div>
+          <div class="quick-card nav-btn" data-section="catalogo">🔧 Actuadores</div>
+          <div class="quick-card nav-btn" data-section="catalogo">📟 Displays</div>
+          <div class="quick-card nav-btn" data-section="catalogo">🧪 Kits educativos</div>
+        </div>
+      </section>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="section-catalogo" class="page-section">
+      <section class="catalog-section">
+        <h2>Catálogo</h2>
+
+        <div class="filters-row">
+          <input id="search-input" type="search" placeholder="Buscar por nombre o marca...">
+          <select id="category-filter">
+            <option value="">Todas las categorías</option>
+          </select>
+          <select id="sort-filter">
+            <option value="recent">Más recientes</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+
+        <div id="products-grid" class="products-grid"></div>
+      </section>
+    </section>
+
+    <!-- DESTACADOS -->
+    <section id="section-destacados" class="page-section">
+      <section class="featured-section">
+        <h2>Destacados</h2>
+        <div id="featured-row" class="featured-row"></div>
+      </section>
+    </section>
+
+   <section class="about-wrapper">
+
+    <!-- ===========================
+         QUIÉNES SOMOS - HERO
+    ============================ -->
+ <!-- NOSOTROS -->
+<section id="section-nosotros" class="page-section">
+    <section class="about-section">
+
+        <h2 class="about-title gradient-title center">Quiénes Somos</h2>
+
+        <p class="about-text center">
+            En <strong>ElectroNova</strong> somos un equipo apasionado por la electrónica, la robótica y la innovación tecnológica.
+            Creamos soluciones modernas, accesibles y profesionales para estudiantes, makers, docentes y desarrolladores que
+            desean llevar sus ideas al siguiente nivel.
+        </p>
+
+        </div>
+
+        <div class="about-image">
+            <img src="img/Electronova.png" alt="Electronic Team">
+        </div>
+    </div>
+
+      <!-- MISIÓN Y VISIÓN -->
+        <div class="mv-grid">
+
+            <div class="mv-card">
+                <h3>🌟 Nuestra misión</h3>
+                <p>
+                    Proveer herramientas tecnológicas de alta calidad y accesibles que impulsen la creatividad,
+                    el aprendizaje y la innovación en la comunidad tecnológica.
+                </p>
+            </div>
+
+            <div class="mv-card">
+                <h3>🚀 Nuestra visión</h3>
+                <p>
+                    Ser la tienda líder en soluciones para robótica, IoT y electrónica en Latinoamérica, promoviendo
+                    el talento y el desarrollo tecnológico de nuevas generaciones.
+                </p>
+            </div>
+        </div>
+
+        <!-- VALORES -->
+        <h2 class="gradient-title center" style="margin-top: 40px;">Nuestros Valores</h2>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <h4>✨ Innovación</h4>
+                <p>Impulsamos nuevas formas de crear, aprender y desarrollar tecnología.</p>
+            </div>
+
+            <div class="value-card">
+                <h4>🤝 Compromiso</h4>
+                <p>Creemos en el trabajo responsable, la calidad y la atención a cada detalle.</p>
+            </div>
+
+            <div class="value-card">
+                <h4>📚 Educación</h4>
+                <p>Desarrollamos kits y recursos para que todos puedan aprender electrónica.</p>
+            </div>
+
+            <div class="value-card">
+                <h4>💡 Creatividad</h4>
+                <p>Convertimos ideas en proyectos reales y funcionales.</p>
+            </div>
+        </div>
+
+    </section>
+</section>
+
+  </main>
+
+  <!-- CARRITO LATERAL -->
+  <aside id="cart-panel" class="cart-panel hidden">
+    <div class="cart-header">
+      <h2>Carrito</h2>
+      <button id="cart-close" class="btn-icon">✕</button>
+    </div>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <span>Total:</span>
+        <span id="cart-total" class="cart-total-amount">$0</span>
+      </div>
+      <button id="cart-checkout" class="btn-primary" disabled>Finalizar compra</button>
+      <button id="cart-clear" class="btn-ghost">Vaciar carrito</button>
+      <small class="muted">* Compra simulada.</small>
+    </div>
+  </aside>
+
+  <div id="cart-backdrop" class="cart-backdrop hidden"></div>
+
+  <!-- PANEL USUARIO -->
+  <aside id="user-panel" class="user-panel hidden">
+    <div class="user-header">
+      <h2 id="user-panel-title">Mi cuenta</h2>
+      <button id="user-close" class="btn-icon">✕</button>
+    </div>
+
+    <!-- CONTENIDO DINÁMICO -->
+    <div id="user-content" class="user-content"></div>
+  </aside>
+
+  <div id="user-backdrop" class="user-backdrop hidden"></div>
+
+  <footer class="site-footer">
+    <p>© 2025 ElectroNova — Proyecto académico</p>
+  </footer>
+
+  <script src="./app.js"></script>
 </body>
+
 </html>
